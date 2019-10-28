@@ -1,3 +1,6 @@
+'''Этот класс создан для работы с hnml'''
 class CinemaParser():
-  def __init__(self, city=msk):
-    self.city = city
+    '''Самый полезный класс'''
+    def __init__(self, city='msk'):
+        '''"Это функция получает на вход город (Москва или Санкт-Петербург)'''
+        self.city = city
