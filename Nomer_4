@@ -1,0 +1,33 @@
+import requests
+from bs4 import BeautifulSoup
+
+class CinemaParser:
+    ''' Самый нужный класс'''
+
+    def __init__(self, city='msk'):
+        ''' Принемаем город'''
+        self.city = city
+        self.content = ''
+        self.number = 0
+        self.station = []
+        self.name = []
+        self.film = []
+        self.site = []
+        self.name = []
+
+    def extract_raw_content(self):
+        ''' Скачиваем HTML содержимое сайта '''
+        url = 'https://{}.subscity.ru'.format(self.city)
+        self.content = requests.get(url)
+
+    def print_raw_content(self):
+        '''Печатаем HTML содержимое(красиво)'''
+        soup = BeautifulSoup(self.content.text, 'html.parser')
+        return soup.prettify()
+ 
+ def get_films_list(self):
+        '''Поиск тегов с фильмами'''
+        soup = BeautifulSoup(self.content.text, 'html.parser')
+        for i in soup.find_all("div", class_='movie-plate'):
+            self.film.append(i["attr-title"])
+        return self.film
