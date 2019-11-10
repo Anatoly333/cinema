@@ -31,3 +31,4 @@ class CinemaParser:
         for i in soup.find_all("div", class_='movie-plate'):
             self.film.append(i["attr-title"])
         return self.film
+        
