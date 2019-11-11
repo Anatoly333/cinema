@@ -26,7 +26,8 @@ class CinemaParser:
         return soup.prettify()
  
     def get_films_list(self):
-        '''Поиск всех тегов с фильмами'''
+        '''Поиск всех тегов с фильмами и очистка'''
+        self.film.clear()
         soup = BeautifulSoup(self.content.text, 'html.parser')
         for i in soup.find_all("div", class_='movie-plate'):
             self.film.append(i["attr-title"])
